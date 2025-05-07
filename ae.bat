@@ -1,0 +1,1 @@
+start /min "Anteater" mvn ae:run ^& exit

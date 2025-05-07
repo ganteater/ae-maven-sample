@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.ganteater.scaff</groupId>
+	<artifactId>ae-maven-sample</artifactId>
+	<version>1.0.0</version>
+
+	<properties>
+		<ae.version>1.2.0</ae.version>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.ganteater</groupId>
+				<artifactId>ae-maven-plugin</artifactId>
+				<version>${ae.version}</version>
+				<configuration>
+					<basedir>.</basedir>
+					<variables>
+						<project.version>${project.version}</project.version>
+					</variables>
+					<propertiesFiles>
+						<file>${basedir}/application.properties</file>
+					</propertiesFiles>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.postgresql</groupId>
+						<artifactId>postgresql</artifactId>
+						<version>42.7.4</version>
+					</dependency>
+					<dependency>
+						<groupId>com.ganteater</groupId>
+						<artifactId>sql-ae-plugin</artifactId>
+						<version>${ae.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>com.ganteater</groupId>
+						<artifactId>jms-ae-plugin</artifactId>
+						<version>${ae.version}</version>
+					</dependency>										
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

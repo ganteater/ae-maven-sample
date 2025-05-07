@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified"
+	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Environment">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="unbounded" name="Configuration">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:choice minOccurs="0" maxOccurs="unbounded">
+								<xs:element minOccurs="0" name="Editor" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:attribute name="class" type="xs:string" use="required" />
+										<xs:attribute name="name" type="xs:string" use="required" />
+									</xs:complexType>
+								</xs:element>
+								<xs:element minOccurs="0" name="Var" maxOccurs="unbounded">
+									<xs:complexType mixed="true">
+										<xs:sequence>
+											<xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+												<xs:complexType mixed="true">
+													<xs:attribute name="key" type="xs:string" use="optional" />
+													<xs:attribute name="value" type="xs:string" use="optional" />
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+										<xs:attribute name="name" type="xs:string" use="required" />
+										<xs:attribute name="value" type="xs:string" use="optional" />
+										<xs:attribute name="type" type="xs:string" use="optional" />
+									</xs:complexType>
+								</xs:element>
+								<xs:element minOccurs="0" name="Logger" maxOccurs="1">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element maxOccurs="unbounded" name="filter">
+												<xs:complexType>
+													<xs:attribute name="class" type="xs:string" use="required" />
+													<xs:attribute name="name" type="xs:string" use="optional" />
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+										<xs:attribute name="rootLogger" type="xs:string" use="optional" />
+										<xs:attribute name="Threshold" type="xs:string" use="optional" />
+										<xs:attribute name="ConversionPattern" type="xs:string" use="optional" />
+										<xs:attribute name="File" type="xs:string" use="optional" />
+									</xs:complexType>
+								</xs:element>
+								<xs:element minOccurs="0" name="Recipes" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:attribute name="path" type="xs:string" use="required" />
+									</xs:complexType>
+								</xs:element>
+								<xs:element minOccurs="0" name="Table" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element maxOccurs="unbounded" name="var">
+												<xs:complexType>
+													<xs:attribute name="name" type="xs:string" use="required" />
+													<xs:attribute name="type" type="xs:string" use="optional" />
+													<xs:attribute name="value" type="xs:string" use="optional" />
+													<xs:attribute name="default" type="xs:string" use="optional" />
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+										<xs:attribute name="name" type="xs:string" use="required" />
+									</xs:complexType>
+								</xs:element>
+								<xs:element minOccurs="0" name="Startup" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:attribute name="task" type="xs:string" use="required" />
+										<xs:attribute name="async" type="xs:boolean" use="optional" />
+									</xs:complexType>
+								</xs:element>
+								<xs:element minOccurs="0" name="Menu" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element maxOccurs="unbounded" name="item">
+												<xs:complexType mixed="true">
+													<xs:sequence>
+														<xs:any namespace="##any" minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+													</xs:sequence>
+													<xs:attribute name="task" type="xs:string" use="optional" />
+													<xs:attribute name="file" type="xs:string" use="optional" />
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+										<xs:attribute name="name" type="xs:string" use="required" />
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string" use="required" />
+						<xs:attribute name="menu" type="xs:string" use="optional" />
+						<xs:attribute name="userPreferencesEncryption" type="xs:boolean" use="optional" />
+						<xs:attribute name="base" type="xs:string" use="optional" />
+						<xs:attribute name="ip" type="xs:string" use="optional" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

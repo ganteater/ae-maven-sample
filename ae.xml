@@ -1,0 +1,89 @@
+<Environment xmlns="http://ganteater.com/CONFIGURATION/1.2.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ganteater.com/CONFIGURATION/1.2.1.0 http://ganteater.com/xsd/anteater-1.2.1.0.xsd">
+
+	<Configuration name="#Base Configuration" userPreferencesEncryption="false">
+		<Var name="log_file" value="commands" />
+		<Logger rootLogger="TRACE,LOGFILE,CONSOLE" Threshold="$var{system::log_level,TRACE}"
+			ConversionPattern="%d{dd.MM.yyyy HH:mm:ss} %-6p %m %n"
+			File="$var{HOME_WORKINGDIR}/logs/$var{log_file}_$var{START_TIME}.log">
+			<filter class="MaskJSON" name="firstName" />
+			<filter class="MaskJSON" name="lastName" />
+			<filter class="MaskEmail" />
+		</Logger>
+
+		<Var name="Data Map" type="map">
+			<item key="a" value="value 1" />
+			<item key="b">value 2</item>
+			<item key="c">value 3</item>
+			<item key="d">value 4</item>
+			<item key="f">value 5</item>
+		</Var>
+
+		<Var name="Data Array" type="array">
+			<item>value 1</item>
+			<item>value 2</item>
+			<item>value 3</item>
+			<item>value 4</item>
+			<item>value 5</item>
+		</Var>
+
+		<Menu name="Read Me">
+			<item file="docs/readme.md" />
+			<item>
+# Example of using commands
+- [Calculate](recipe:Calculate)
+- [Choice](recipe:Choice)
+			</item>
+		</Menu>
+	</Configuration>
+
+	<Configuration name="Commands" userPreferencesEncryption="false" base="#Base Configuration">
+		<Logger rootLogger="INFO,LOGFILE,CONSOLE" Threshold="$var{system::log_level,DEBUG}"
+			ConversionPattern="%d{dd.MM.yyyy HH:mm:ss} %-6p %m %n"
+			File="$var{HOME_WORKINGDIR}/logs/$var{log_file}_$var{START_TIME}.log">
+			<filter class="MaskJSON" name="firstName" />
+			<filter class="MaskJSON" name="lastName" />
+			<filter class="MaskEmail" />
+		</Logger>
+		<Recipes path="../recipes/commands" />
+	</Configuration>
+
+	<Configuration name="Commands from sourceforge.net" userPreferencesEncryption="false" base="#Base Configuration">
+		<Recipes path="https://sourceforge.net/code-snapshots/svn/a/an/anteater/code/anteater-code-r665-trunk-ae-samples-recipes-commands.zip"/>
+		<Var name="Look_And_Feel" value="javax.swing.plaf.nimbus.NimbusLookAndFeel"/>
+	</Configuration>
+
+	<Configuration name="DB" userPreferencesEncryption="false" base="#Base Configuration" ip="127.0.0.*">
+		<Var name="postgresql" type="jdbc">
+			<item key="url" value="jdbc:postgresql://localhost:5432/macha"/>
+			<item key="password" value="$var{db password}"/>
+			<item key="username" value="$var{db username}"/>
+			<item key="driver" value="org.postgresql.Driver"/>
+		</Var>
+
+		<Recipes path="../recipes/sql" />
+
+		<Table name="DB Authorisation">
+			<var name="db username" default="macha" />
+			<var name="db password" default="macha" type="password" />
+		</Table>
+	</Configuration>
+
+	<Configuration name="JMS" userPreferencesEncryption="false" base="#Base Configuration" ip="127.0.0.*">
+		<Recipes path="../recipes/jms" />
+
+		<Var name="jms.configuration" type="map">
+			<item key="host">localhost</item>
+			<item key="manager">MQ1</item>
+			<item key="channel">DEV.APP.SVRCONN</item>
+			<item key="port">1414</item>
+			<item key="user">admin</item>
+			<item key="password">passw0rd</item>
+		</Var>
+	</Configuration>
+	
+	<Configuration name="Web" base="#Base Configuration">
+		<Recipes path="../recipes/web" />
+	</Configuration>
+
+</Environment>
