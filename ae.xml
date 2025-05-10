@@ -1,5 +1,6 @@
-<Environment xmlns="http://ganteater.com/CONFIGURATION/1.2.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://ganteater.com/CONFIGURATION/1.2.1.0 http://ganteater.com/xsd/anteater-1.2.1.0.xsd">
+<Environment xmlns="http://ganteater.com/xml/configuration"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ganteater.com/xml/configuration https://ganteater.com/xml/configuration/anteater-1.2.1.0.xsd">
 
 	<Configuration name="#Base Configuration" userPreferencesEncryption="false">
 		<Var name="log_file" value="commands" />

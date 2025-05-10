@@ -37,12 +37,12 @@
 						<version>42.7.4</version>
 					</dependency>
 					<dependency>
-						<groupId>com.ganteater</groupId>
+						<groupId>com.ganteater.plugins</groupId>
 						<artifactId>sql-ae-plugin</artifactId>
 						<version>${ae.version}</version>
 					</dependency>
 					<dependency>
-						<groupId>com.ganteater</groupId>
+						<groupId>com.ganteater.plugins</groupId>
 						<artifactId>jms-ae-plugin</artifactId>
 						<version>${ae.version}</version>
 					</dependency>										
